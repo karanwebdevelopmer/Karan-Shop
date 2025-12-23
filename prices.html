@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karan Mobile Shop – Service Prices</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Poppins,Arial,sans-serif;
+    background:#eef2f5;
+    color:#222;
+    transition:0.3s;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#2193b0,#6dd5ed);
+    color:#fff;
+    padding:25px;
+    text-align:center;
+}
+header img{width:70px}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    background:#fff;
+    padding:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+nav a{
+    text-decoration:none;
+    color:#2193b0;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:6px
+}
+nav a:hover{background:#2193b0;color:#fff}
+
+.theme-btn{
+    border:none;
+    background:#2193b0;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:50%;
+    cursor:pointer
+}
+
+/* BUTTONS */
+button{
+    background:#2193b0;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer
+}
+button:hover{background:#176b80}
+
+/* SEARCH */
+#priceSearch{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    margin-bottom:15px
+}
+
+/* MAIN */
+main{
+    max-width:1200px;
+    margin:30px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1)
+}
+h2{text-align:center;color:#2193b0}
+
+/* PRICE LIST */
+.price-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:16px
+}
+.price-list li{
+    list-style:none;
+    background:#f8fafc;
+    padding:16px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.3s
+}
+.price-list li:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 15px rgba(0,0,0,.15)
+}
+.price{color:#0f9d58;font-weight:700}
+
+/* NOTE */
+.note{
+    margin-top:25px;
+    padding:15px;
+    background:#f1f9ff;
+    border-left:5px solid #2193b0;
+    border-radius:8px
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    background:#2193b0;
+    box-shadow:0 -4px 10px rgba(0,0,0,.08)
+}
+
+/* FLOATING BUTTONS */
+.contact-float{
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:999
+}
+.contact-float a{
+    background:#fff;
+    padding:10px;
+    border-radius:50%;
+    box-shadow:0 6px 15px rgba(0,0,0,.3)
+}
+
+/* DARK MODE */
+.dark-mode{
+    background:#121212;
+    color:#eaeaea
+}
+.dark-mode nav,
+.dark-mode main,
+.dark-mode footer{
+    background:#1e1e1e;
+    color:#eaeaea
+}
+.dark-mode .price-list li{background:#242424}
+.dark-mode .price{color:#4caf50}
+
+.selected-service{
+    border-left:6px solid #0f9d58;
+    background:#eafff3;
+    transform:scale(1.02);
+    transition:0.3s;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <img src="https://img.icons8.com/color/96/smartphone-tablet.png">
+    <h1>Karan Mobile Shop</h1>
+    <p>All Mobile Sell Here And Also  Repair Services</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="prices.html">Prices</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="toggleTheme()" class="theme-btn">🌙</button>
+</nav>
+
+<input id="priceSearch" placeholder="Search repair prices..."onkeyup="filterList()">
+
+<main>
+<h2>Mobile Repair Price List</h2>
+
+<ul class="price-list " id="pricelist">
+   <li onclick="sendProblem('Touch Glass Replacement – ₹800–₹2,500', this)">Touch Glass Replacement <span class="price">₹800 – ₹2,500</span></li>
+<li onclick="sendProblem('Display Repair – ₹1,500–₹4,500', this)">Display Repair <span class="price">₹1,500 – ₹4,500</span></li>
+<li onclick="sendProblem('Button Change (Power & Volume) – ₹300–₹1,000', this)">Button Change (Power & Volume) <span class="price">₹300 – ₹1,000</span></li>
+<li onclick="sendProblem('Charging Port Repair – ₹300–₹1,200', this)">Charging Port Repair <span class="price">₹300 – ₹1,200</span></li>
+<li onclick="sendProblem('Battery Replacement – ₹500–₹2,000', this)">Battery Replacement <span class="price">₹500 – ₹2,000</span></li>
+<li onclick="sendProblem('Speaker Repair – ₹400–₹1,200', this)">Speaker Repair <span class="price">₹400 – ₹1,200</span></li>
+<li onclick="sendProblem('Microphone Repair – ₹400–₹1,200', this)">Microphone Repair <span class="price">₹400 – ₹1,200</span></li>
+<li onclick="sendProblem('Headphone Jack Repair – ₹300–₹1,000', this)">Headphone Jack Repair <span class="price">₹300 – ₹1,000</span></li>
+<li onclick="sendProblem('Camera Repair – ₹500–₹2,500', this)">Camera Repair <span class="price">₹500 – ₹2,500</span></li>
+<li onclick="sendProblem('Camera Lens Replacement – ₹300–₹1,000', this)">Camera Lens Replacement <span class="price">₹300 – ₹1,000</span></li>
+<li onclick="sendProblem('Front Camera Repair – ₹600–₹2,000', this)">Front Camera Repair <span class="price">₹600 – ₹2,000</span></li>
+<li onclick="sendProblem('Back Camera Repair – ₹800–₹3,500', this)">Back Camera Repair <span class="price">₹800 – ₹3,500</span></li>
+<li onclick="sendProblem('Software Problem Fix – ₹200–₹700', this)">Software Problem Fix <span class="price">₹200 – ₹700</span></li>
+<li onclick="sendProblem('Phone Hang & Slow Issue Fix – ₹300–₹800', this)">Phone Hang & Slow Issue Fix <span class="price">₹300 – ₹800</span></li>
+<li onclick="sendProblem('Virus Removal – ₹200–₹600', this)">Virus Removal <span class="price">₹200 – ₹600</span></li>
+<li onclick="sendProblem('Software Update – ₹200–₹500', this)">Software Update <span class="price">₹200 – ₹500</span></li>
+<li onclick="sendProblem('OS Installation / Flashing – ₹300–₹1,000', this)">OS Installation / Flashing <span class="price">₹300 – ₹1,000</span></li>
+<li onclick="sendProblem('Pattern / Password Unlock – ₹500–₹2,000', this)">Pattern / Password Unlock <span class="price">₹500 – ₹2,000</span></li>
+<li onclick="sendProblem('Data Recovery – ₹1,000–₹5,000', this)">Data Recovery <span class="price">₹1,000 – ₹5,000</span></li>
+<li onclick="sendProblem('Data Transfer – ₹200–₹500', this)">Data Transfer <span class="price">₹200 – ₹500</span></li>
+<li onclick="sendProblem('Water Damage Repair – ₹800–₹4,000', this)">Water Damage Repair <span class="price">₹800 – ₹4,000</span></li>
+<li onclick="sendProblem('Network Signal Problem Fix – ₹600–₹2,500', this)">Network Signal Problem Fix <span class="price">₹600 – ₹2,500</span></li>
+<li onclick="sendProblem('No Service Issue Repair – ₹600–₹2,500', this)">No Service Issue Repair <span class="price">₹600 – ₹2,500</span></li>
+<li onclick="sendProblem('SIM Slot Repair – ₹500–₹1,500', this)">SIM Slot Repair <span class="price">₹500 – ₹1,500</span></li>
+<li onclick="sendProblem('SIM Card Detection Issue Fix – ₹400–₹1,200', this)">SIM Card Detection Issue Fix <span class="price">₹400 – ₹1,200</span></li>
+<li onclick="sendProblem('Wi-Fi Problem Repair – ₹500–₹2,000', this)">Wi-Fi Problem Repair <span class="price">₹500 – ₹2,000</span></li>
+<li onclick="sendProblem('Bluetooth Issue Repair – ₹500–₹1,800', this)">Bluetooth Issue Repair <span class="price">₹500 – ₹1,800</span></li>
+<li onclick="sendProblem('Mobile Heating Issue Fix – ₹400–₹1,500', this)">Mobile Heating Issue Fix <span class="price">₹400 – ₹1,500</span></li>
+<li onclick="sendProblem('Auto Restart Problem Fix – ₹500–₹2,000', this)">Auto Restart Problem Fix <span class="price">₹500 – ₹2,000</span></li>
+<li onclick="sendProblem('Dead Phone Repair – ₹1,500–₹6,000', this)">Dead Phone Repair <span class="price">₹1,500 – ₹6,000</span></li>
+<li onclick="sendProblem('Boot Loop Issue Fix – ₹600–₹2,500', this)">Boot Loop Issue Fix <span class="price">₹600 – ₹2,500</span></li>
+<li onclick="sendProblem('Motherboard Repair – ₹1,000–₹8,000', this)">Motherboard Repair <span class="price">₹1,000 – ₹8,000</span></li>
+<li onclick="sendProblem('IC Replacement – ₹800–₹5,000', this)">IC Replacement <span class="price">₹800 – ₹5,000</span></li>
+<li onclick="sendProblem('Charging Slow Issue Fix – ₹300–₹1,200', this)">Charging Slow Issue Fix <span class="price">₹300 – ₹1,200</span></li>
+<li onclick="sendProblem('Battery Drain Issue Fix – ₹400–₹1,500', this)">Battery Drain Issue Fix <span class="price">₹400 – ₹1,500</span></li>
+<li onclick="sendProblem('Display Line Issue Repair – ₹800–₹3,000', this)">Display Line Issue Repair <span class="price">₹800 – ₹3,000</span></li>
+<li onclick="sendProblem('Touch Not Working Fix – ₹600–₹2,500', this)">Touch Not Working Fix <span class="price">₹600 – ₹2,500</span></li>
+<li onclick="sendProblem('Proximity Sensor Repair – ₹500–₹1,500', this)">Proximity Sensor Repair <span class="price">₹500 – ₹1,500</span></li>
+<li onclick="sendProblem('Fingerprint Sensor Repair – ₹700–₹2,500', this)">Fingerprint Sensor Repair <span class="price">₹700 – ₹2,500</span></li>
+<li onclick="sendProblem('Face Unlock Issue Fix – ₹500–₹2,000', this)">Face Unlock Issue Fix <span class="price">₹500 – ₹2,000</span></li>
+<li onclick="sendProblem('Vibration Motor Repair – ₹300–₹1,000', this)">Vibration Motor Repair <span class="price">₹300 – ₹1,000</span></li>
+<li onclick="sendProblem('Flashlight Repair – ₹300–₹800', this)">Flashlight Repair <span class="price">₹300 – ₹800</span></li>
+<li onclick="sendProblem('Memory Card Slot Repair – ₹500–₹1,500', this)">Memory Card Slot Repair <span class="price">₹500 – ₹1,500</span></li>
+<li onclick="sendProblem('Phone Freezing Issue Fix – ₹400–₹1,200', this)">Phone Freezing Issue Fix <span class="price">₹400 – ₹1,200</span></li>
+<li onclick="sendProblem('Speaker Sound Low Issue Fix – ₹400–₹1,200', this)">Speaker Sound Low Issue Fix <span class="price">₹400 – ₹1,200</span></li>
+<li onclick="sendProblem('Mic Sound Low Issue Fix – ₹400–₹1,200', this)">Mic Sound Low Issue Fix <span class="price">₹400 – ₹1,200</span></li>
+<li onclick="sendProblem('Network Unlocking – ₹1,000–₹4,000', this)">Network Unlocking <span class="price">₹1,000 – ₹4,000</span></li>
+<li onclick="sendProblem('IMEI Repair – ₹1,500–₹6,000', this)">IMEI Repair <span class="price">₹1,500 – ₹6,000</span></li>
+<li onclick="sendProblem('Screen Replacement – ₹1,500–₹6,000', this)">Screen Replacement <span class="price">₹1,500 – ₹6,000</span></li>
+
+</ul>
+
+<div class="note">
+<strong>Note:</strong> Prices may vary according to model and damage.
+</div>
+</main>
+
+<footer>
+© 2025 Karan Mobile Shop | Deoghar, Jharkhand
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="contact-float">
+<a href="https://wa.me/919999999999" target="_blank">
+<img src="https://img.icons8.com/color/48/whatsapp--v1.png">
+</a>
+<a href="tel:1234567898">
+<img src="https://img.icons8.com/color/48/phone.png">
+</a>
+</div>
+
+<script>
+
+function filterList(){
+    let input=document.getElementById('priceSearch').value.toLowerCase();
+    let items=document.querySelectorAll('#pricelist li');
+    items.forEach(item=>{
+        item.style.display=item.textContent.toLowerCase().includes(input)?'':'none';
+    });
+}
+
+function sendProblem(problem){
+    window.location.href =
+        "contact.html?problem=" + encodeURIComponent(problem);
+}
+
+function sendProblem(problem){
+    const confirmGo = confirm(
+        "Selected Service:\n\n" + problem + "\n\nContact page par jana chahte ho?"
+    );
+
+    if(confirmGo){
+        window.location.href =
+            "contact.html?problem=" + encodeURIComponent(problem);
+    }
+}
+
+function sendProblem(problem, element){
+
+    document
+        .querySelectorAll(".services-list li")
+        .forEach(li => li.classList.remove("selected-service"));
+
+    element.classList.add("selected-service");
+
+    setTimeout(() => {
+        window.location.href =
+            "contact.html?problem=" + encodeURIComponent(problem);
+    }, 500);
+}
+</script>
+
+</body>
+</html>

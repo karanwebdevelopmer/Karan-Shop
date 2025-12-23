@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – Karan Mobile Shop</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Poppins,Arial,sans-serif;
+    background:#eef2f5;
+    color:#222;
+    transition:.3s;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#2193b0,#6dd5ed);
+    color:#fff;
+    text-align:center;
+    padding:30px 15px;
+}
+header img{width:70px}
+header h1{margin:10px 0 0}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    background:#fff;
+    padding:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+nav a{
+    text-decoration:none;
+    color:#2193b0;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:6px
+}
+nav a:hover{background:#2193b0;color:#fff}
+
+.theme-btn{
+    border:none;
+    background:#2193b0;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:50%;
+    cursor:pointer
+}
+
+/* MAIN */
+main{
+    max-width:950px;
+    margin:30px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1)
+}
+
+h2{text-align:center;color:#2193b0}
+
+/* SHOP INFO */
+.shop-info{
+    background:#f8fafc;
+    padding:20px;
+    border-left:5px solid #2193b0;
+    border-radius:10px;
+    margin-bottom:30px;
+    line-height:1.8
+}
+
+/* FORM */
+.contact-form label{
+    font-weight:600;
+    margin-top:15px;
+    display:block
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:15px
+}
+
+.contact-form textarea{
+    resize:none;
+    height:120px
+}
+
+.contact-form button{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    background:#2193b0;
+    color:#fff;
+    border:none;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer
+}
+.contact-form button:hover{background:#176b80}
+
+.message{
+    margin-top:15px;
+    text-align:center;
+    color:green;
+    font-weight:600;
+    display:none
+}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+    text-align:center;
+    padding:15px;
+    background:#2193b0;
+    box-shadow:0 -4px 10px rgba(0,0,0,.08)
+    
+}
+
+/* FLOATING BUTTONS */
+.contact-float{
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:999
+}
+.contact-float a{
+    background:#fff;
+    padding:10px;
+    border-radius:50%;
+    box-shadow:0 6px 15px rgba(0,0,0,.3)
+}
+
+/* DARK MODE */
+.dark-mode{
+    background:#121212;
+    color:#eaeaea
+}
+.dark-mode nav,
+.dark-mode main,
+.dark-mode footer{
+    background:#1e1e1e;
+    color:#eaeaea
+}
+.dark-mode .shop-info{background:#242424}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://img.icons8.com/color/96/smartphone-tablet.png">
+    <h1>Contact Karan Mobile Shop</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="prices.html">Prices</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="toggleTheme()" class="theme-btn">🌙</button>
+</nav>
+
+<main>
+    <h2>Get in Touch</h2>
+
+    <div class="shop-info">
+        <p><strong>Shop Name:</strong> Karan Mobile Shop</p>
+        <p><strong>Address:</strong> Baramasia, Deoghar, Jharkhand – 814112</p>
+        <p><strong>Phone:</strong> +91 9XXXXXXXXX</p>
+        <p><strong>Open Time:</strong> 9:00 AM – 9:00 PM (All Days)</p>
+    </div>
+
+    <div class="contact-form">
+        <form id="contactForm">
+            <label>Your Name</label>
+            <input type="text" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" required>
+
+            <label>Problem Description</label>
+            <textarea  id="problemText" required></textarea>
+
+            <button type="submit">Submit</button>
+
+           
+</button>
+
+        </form>
+
+        <div class="message" id="successMessage">
+            Thank you! We will contact you soon.
+        </div>
+    </div>
+</main>
+
+<footer>
+    © 2025 Karan Mobile Shop | Baramasia, Deoghar, Jharkhand – 814112
+</footer>
+
+<!-- WHATSAPP & CALL -->
+<div class="contact-float">
+    <a href="https://wa.me/919999999999" target="_blank">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png">
+    </a>
+    <a href="tel:9999999999">
+        <img src="https://img.icons8.com/color/48/phone.png">
+    </a>
+</div>
+
+<script>
+function toggleTheme(){
+    document.body.classList.toggle("dark-mode");
+}
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    document.getElementById("successMessage").style.display="block";
+    this.reset();
+});
+
+function toggleTheme(){
+    document.body.classList.toggle("dark-mode");
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const problem = params.get("problem");
+
+    if (problem) {
+        document.getElementById("problemText").value = problem;
+    }
+});
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    document.getElementById("successMessage").style.display="block";
+    this.reset();
+});
+
+</script>
+</body>
+</html>

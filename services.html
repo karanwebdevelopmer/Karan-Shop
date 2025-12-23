@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mihir Mobile Shop – Services</title>
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    font-family:Poppins,Arial,sans-serif;
+    background:#eef2f5;
+    color:#222;
+    transition:.3s;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#2193b0,#6dd5ed);
+    color:#fff;
+    text-align:center;
+    padding:30px 15px;
+}
+header img{width:70px}
+header h1{margin:10px 0 0}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    background:#fff;
+    padding:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+nav a{
+    text-decoration:none;
+    color:#2193b0;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:6px
+}
+nav a:hover{background:#2193b0;color:#fff}
+.theme-btn{
+    border:none;
+    background:#2193b0;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:50%;
+    cursor:pointer
+}
+
+/* SEARCH */
+#serviceSearch{
+    width:100%;
+    padding:12px;
+    margin:20px auto;
+    display:block;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+/* MAIN */
+main{
+    max-width:1100px;
+    margin:20px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1)
+}
+
+h2{text-align:center;color:#2193b0;margin-bottom:20px}
+
+/* SERVICES LIST */
+.services-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:12px;
+}
+.services-list li{
+    list-style:none;
+    background:#f9fafb;
+    padding:15px 20px;
+    border-radius:8px;
+    border-left:5px solid #2193b0;
+    font-size:15px;
+    transition:transform .2s,box-shadow .2s;
+}
+.services-list li:hover{
+    transform:translateY(-3px);
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    background:#2193b0;
+    padding:15px;
+    margin-top:30px;
+    font-size:14px;
+    box-shadow:0 -4px 10px rgba(0,0,0,.08);
+}
+
+/* FLOATING BUTTONS */
+.contact-float{
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:999
+}
+.contact-float a{
+    background:#fff;
+    padding:10px;
+    border-radius:50%;
+    box-shadow:0 6px 15px rgba(0,0,0,.3)
+}
+
+/* DARK MODE */
+.dark-mode{
+    background:#121212;
+    color:#eaeaea;
+}
+.dark-mode nav,
+.dark-mode main,
+.dark-mode footer{
+    background:#1e1e1e;
+    color:#eaeaea;
+}
+.dark-mode .services-list li{
+    background:#2a2a2a;
+    border-left:5px solid #2193b0;
+}
+
+.selected-service{
+    border:2px solid #0f9d58 !important;
+    background:#eafff3 !important;
+    transform:scale(1.02);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://img.icons8.com/color/96/smartphone-tablet.png"/>
+    <h1>Karan Mobile Shop Services</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="prices.html">Prices</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="toggleTheme()" class="theme-btn">🌙</button>
+</nav>
+
+<input type="text" id="serviceSearch" placeholder="Search services..." onkeyup="filterList()">
+
+<main>
+    <h2>Our Professional Mobile Repair Services</h2>
+
+<p id="serviceCount" style="margin-bottom:10px;font-weight:600;">
+  Showing services...
+</p>
+
+    <ul class="services-list" id="servicesList">
+       <li onclick="sendProblem('Touch Glass Replacement', this)">Touch Glass Replacement</li>
+<li onclick="sendProblem('Display Repair', this)">Display Repair</li>
+<li onclick="sendProblem('Button Change (Power & Volume)', this)">Button Change (Power & Volume)</li>
+<li onclick="sendProblem('Charging Port Repair', this)">Charging Port Repair</li>
+<li onclick="sendProblem('Battery Replacement', this)">Battery Replacement</li>
+<li onclick="sendProblem('Speaker Repair', this)">Speaker Repair</li>
+<li onclick="sendProblem('Microphone Repair', this)">Microphone Repair</li>
+<li onclick="sendProblem('Headphone Jack Repair', this)">Headphone Jack Repair</li>
+<li onclick="sendProblem('Camera Repair', this)">Camera Repair</li>
+<li onclick="sendProblem('Camera Lens Replacement', this)">Camera Lens Replacement</li>
+<li onclick="sendProblem('Front Camera Repair', this)">Front Camera Repair</li>
+<li onclick="sendProblem('Back Camera Repair', this)">Back Camera Repair</li>
+<li onclick="sendProblem('Software Problem Fix', this)">Software Problem Fix</li>
+<li onclick="sendProblem('Phone Hang & Slow Issue Fix', this)">Phone Hang & Slow Issue Fix</li>
+<li onclick="sendProblem('Virus Removal', this)">Virus Removal</li>
+<li onclick="sendProblem('Software Update', this)">Software Update</li>
+<li onclick="sendProblem('OS Installation / Flashing', this)">OS Installation / Flashing</li>
+<li onclick="sendProblem('Pattern / Password Unlock', this)">Pattern / Password Unlock</li>
+<li onclick="sendProblem('Data Recovery', this)">Data Recovery</li>
+<li onclick="sendProblem('Data Transfer', this)">Data Transfer</li>
+<li onclick="sendProblem('Water Damage Repair', this)">Water Damage Repair</li>
+<li onclick="sendProblem('Network Signal Problem Fix', this)">Network Signal Problem Fix</li>
+<li onclick="sendProblem('No Service Issue Repair', this)">No Service Issue Repair</li>
+<li onclick="sendProblem('SIM Slot Repair', this)">SIM Slot Repair</li>
+<li onclick="sendProblem('SIM Card Detection Issue Fix', this)">SIM Card Detection Issue Fix</li>
+<li onclick="sendProblem('Wi-Fi Problem Repair', this)">Wi-Fi Problem Repair</li>
+<li onclick="sendProblem('Bluetooth Issue Repair', this)">Bluetooth Issue Repair</li>
+<li onclick="sendProblem('Mobile Heating Issue Fix', this)">Mobile Heating Issue Fix</li>
+<li onclick="sendProblem('Auto Restart Problem Fix', this)">Auto Restart Problem Fix</li>
+<li onclick="sendProblem('Dead Phone Repair', this)">Dead Phone Repair</li>
+<li onclick="sendProblem('Boot Loop Issue Fix', this)">Boot Loop Issue Fix</li>
+<li onclick="sendProblem('Motherboard Repair', this)">Motherboard Repair</li>
+<li onclick="sendProblem('IC Replacement', this)">IC Replacement</li>
+<li onclick="sendProblem('Charging Slow Issue Fix', this)">Charging Slow Issue Fix</li>
+<li onclick="sendProblem('Battery Drain Issue Fix', this)">Battery Drain Issue Fix</li>
+<li onclick="sendProblem('Display Line Issue Repair', this)">Display Line Issue Repair</li>
+<li onclick="sendProblem('Touch Not Working Fix', this)">Touch Not Working Fix</li>
+<li onclick="sendProblem('Proximity Sensor Repair', this)">Proximity Sensor Repair</li>
+<li onclick="sendProblem('Fingerprint Sensor Repair', this)">Fingerprint Sensor Repair</li>
+<li onclick="sendProblem('Face Unlock Issue Fix', this)">Face Unlock Issue Fix</li>
+<li onclick="sendProblem('Vibration Motor Repair', this)">Vibration Motor Repair</li>
+<li onclick="sendProblem('Flashlight Repair', this)">Flashlight Repair</li>
+<li onclick="sendProblem('Memory Card Slot Repair', this)">Memory Card Slot Repair</li>
+<li onclick="sendProblem('Phone Freezing Issue Fix', this)">Phone Freezing Issue Fix</li>
+<li onclick="sendProblem('Speaker Sound Low Issue Fix', this)">Speaker Sound Low Issue Fix</li>
+<li onclick="sendProblem('Mic Sound Low Issue Fix', this)">Mic Sound Low Issue Fix</li>
+<li onclick="sendProblem('Network Unlocking', this)">Network Unlocking</li>
+<li onclick="sendProblem('IMEI Repair', this)">IMEI Repair</li>
+
+    </ul>
+</main>
+
+<footer>
+    © 2025 Mihir Mobile Shop | Baramasia, Deoghar, Jharkhand – 814112
+</footer>
+
+<!-- WHATSAPP & CALL -->
+<div class="contact-float">
+    <a href="https://wa.me/919999999999" target="_blank">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png"/>
+    </a>
+    <a href="tel:9999999999">
+        <img src="https://img.icons8.com/color/48/phone.png"/>
+    </a>
+</div>
+
+<script>
+function toggleTheme(){
+    document.body.classList.toggle("dark-mode");
+}
+
+function filterList(){
+    let input=document.getElementById('serviceSearch').value.toLowerCase();
+    let items=document.querySelectorAll('#servicesList li');
+    items.forEach(item=>{
+        item.style.display=item.textContent.toLowerCase().includes(input)?'':'none';
+    });
+}
+
+function sendProblem(problem){
+    window.location.href =
+        "contact.html?problem=" + encodeURIComponent(problem);
+}
+
+function sendProblem(problem, element){
+    document
+        .querySelectorAll("li")
+        .forEach(li => li.classList.remove("selected-service"));
+
+    element.classList.add("selected-service");
+
+    setTimeout(() => {
+        window.location.href =
+            "contact.html?problem=" + encodeURIComponent(problem);
+    }, 400);
+}
+</script>
+
+</body>
+</html>
+

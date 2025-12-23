@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karan Mobile Shop</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Poppins,Arial,sans-serif;
+    background:#eef2f5;
+    color:#222;
+    transition:.3s;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#2193b0,#6dd5ed);
+    color:#fff;
+    text-align:center;
+    padding:30px 15px;
+}
+header img{width:80px}
+header h1{margin:10px 0 5px}
+header p{margin:0}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    background:#fff;
+    padding:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+nav a{
+    text-decoration:none;
+    color:#2193b0;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:6px
+}
+nav a:hover{background:#2193b0;color:#fff}
+
+.theme-btn{
+    border:none;
+    background:#2193b0;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:50%;
+    cursor:pointer
+}
+
+/* MAIN */
+main, article{
+    max-width:1100px;
+    margin:30px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1)
+}
+
+h2{color:#2193b0;margin-top:0}
+
+/* SERVICE BOXES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+    margin-top:20px
+}
+.service{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    transition:.3s
+}
+.service:hover{
+    transform:translateY(-5px);
+    box-shadow:0 6px 15px rgba(0,0,0,.15)
+}
+.service img{width:50px}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+    text-align:center;
+    padding:15px;
+    background:#2193b0;
+    box-shadow:0 -4px 10px rgba(0,0,0,.08)
+}
+
+/* FLOATING BUTTONS */
+.contact-float{
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:999
+}
+.contact-float a{
+    background:#fff;
+    padding:10px;
+    border-radius:50%;
+    box-shadow:0 6px 15px rgba(0,0,0,.3)
+}
+
+/* DARK MODE */
+.dark-mode{
+    background:#121212;
+    color:#eaeaea
+}
+.dark-mode nav,
+.dark-mode main,
+.dark-mode article,
+.dark-mode footer{
+    background:#1e1e1e;
+    color:#eaeaea
+}
+.dark-mode .service{background:#242424}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://img.icons8.com/color/96/smartphone-tablet.png">
+    <h1>Karan Mobile Shop</h1>
+    <p>All Types of Mobile Repair Services</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="prices.html">Prices</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="toggleTheme()" class="theme-btn">🌙</button>
+</nav>
+
+<main>
+    <h2>Welcome to Karan Mobile Shop</h2>
+    <p>
+        We provide professional mobile repair services for all brands including
+        Android and iPhone. Fast service, affordable price, and trusted work.
+    </p>
+
+    <div class="services">
+        <div class="service">
+            <img src="https://img.icons8.com/color/48/cracked-phone.png">
+            <h3>Screen Repair</h3>
+            <p>Broken or cracked screen replacement</p>
+        </div>
+
+        <div class="service">
+            <img src="https://img.icons8.com/color/48/battery.png">
+            <h3>Battery Change</h3>
+            <p>Fast battery replacement service</p>
+        </div>
+
+        <div class="service">
+            <img src="https://img.icons8.com/color/48/charging-battery.png">
+            <h3>Charging Issue</h3>
+            <p>Charging port & power problems</p>
+        </div>
+
+        <div class="service">
+            <img src="https://img.icons8.com/color/48/water.png">
+            <h3>Water Damage</h3>
+            <p>Water damaged phone repair</p>
+        </div>
+    </div>
+</main>
+
+<article>
+    <h2>Why Choose Us?</h2>
+    <ul>
+        <li>✔ Experienced technicians</li>
+        <li>✔ Affordable pricing</li>
+        <li>✔ Fast service</li>
+        <li>✔ Genuine spare parts</li>
+    </ul>
+</article>
+
+<footer>
+    © 2025 Karan Mobile Shop | Baramasia, Deoghar, Jharkhand – 814112
+</footer>
+
+<!-- WHATSAPP & CALL -->
+<div class="contact-float">
+    <a href="https://wa.me/919999999999" target="_blank">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png">
+    </a>
+    <a href="tel:9999999999">
+        <img src="https://img.icons8.com/color/48/phone.png">
+    </a>
+</div>
+
+<script>
+function toggleTheme(){
+    document.body.classList.toggle("dark-mode");
+}
+</script>
+
+</body>
+</html>
