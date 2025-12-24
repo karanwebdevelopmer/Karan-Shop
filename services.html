@@ -145,6 +145,81 @@ footer{
     transform:scale(1.02);
 }
 
+    /* MOBILE RESPONSIVE FIX */
+@media (max-width: 768px){
+
+    header{
+        padding:20px 10px;
+    }
+
+    header img{
+        width:60px;
+    }
+
+    header h1{
+        font-size:22px;
+    }
+
+    header p{
+        font-size:14px;
+    }
+
+    /* NAV FIX */
+    nav{
+        flex-wrap:wrap;
+        gap:8px;
+    }
+
+    nav a{
+        font-size:14px;
+        padding:5px 8px;
+    }
+
+    .theme-btn{
+        padding:6px 8px;
+    }
+
+    /* MAIN CONTENT */
+    main, article{
+        margin:15px;
+        padding:18px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+    p, li{
+        font-size:14px;
+    }
+
+    /* SERVICES GRID */
+    .services{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .service img{
+        width:40px;
+    }
+
+    /* FLOAT BUTTON FIX */
+    .contact-float{
+        right:10px;
+        bottom:10px;
+    }
+
+    .contact-float a{
+        padding:8px;
+    }
+
+    .contact-float img{
+        width:35px;
+    }
+
+}
+
+
 </style>
 </head>
 
@@ -273,4 +348,5 @@ function sendProblem(problem, element){
 
 </body>
 </html>
+
 
